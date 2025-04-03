@@ -12,53 +12,6 @@ import com.google.firebase.database.ValueEventListener
 
 class ManagmentCart(private val context: Context) {
     private val tinyDB: TinyDB = TinyDB(context)
-
-    /*fun insertFood(item: Foods) {
-        val listpop = getListCart()
-        var existAlready = false
-        var n = 0
-        for (i in listpop.indices) {
-            if (listpop[i].Title == item.Title) {
-                existAlready = true
-                n = i
-                break
-            }
-        }
-        if (existAlready) {
-            listpop[n].numberInCart = item.numberInCart
-        } else {
-            listpop.add(item)
-        }
-        tinyDB.putListObject("CartList", listpop)
-        Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show()
-    }*/
-
-    /*fun insertFood(item: Foods) {
-        val cartRef = FirebaseDatabase.getInstance().getReference("Cart")
-        cartRef.orderByChild("Title").equalTo(item.Title)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        for (snapshot in dataSnapshot.children) {
-                            val key = snapshot.key!!
-                            //favoritesRef.child(key).child("numberInFavorite").setValue(item.getNumberInFavorite());
-                        }
-                    } else {
-                        val newCartRef = cartRef.push()
-                        newCartRef.child("Title").setValue(item.Title)
-                        newCartRef.child("Price").setValue(item.Price)
-                        newCartRef.child("ImagePath").setValue(item.ImagePath)
-                        newCartRef.child("numberInCart").setValue(item.numberInCart)
-                        newCartRef.child("TotalPrice").setValue(item.numberInCart * item.Price)
-                        newCartRef.child("Description").setValue(item.Description)
-                        Toast.makeText(context, "Added to Cart", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                override fun onCancelled(databaseError: DatabaseError) {
-                    //Handle Errors
-                }
-            })
-    }*/
     fun insertFood(item: Foods) {
         val sharedPreferences = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
         val userEmail = sharedPreferences.getString("email", "")
@@ -72,7 +25,6 @@ class ManagmentCart(private val context: Context) {
                         if (dataSnapshot.exists()) {
                             for (snapshot in dataSnapshot.getChildren()) {
                                 val key = snapshot.key!!
-                                //favoritesRef.child(key).child("numberInFavorite").setValue(item.getNumberInFavorite());
                             }
                         } else {
                             val newCartRef = cartRef.push()
@@ -108,20 +60,6 @@ class ManagmentCart(private val context: Context) {
         }
         return fee
     }
-
-    /*fun minusNumberItem(
-        listItem: ArrayList<Foods>,
-        position: Int,
-        changeNumberItemsListener: ChangeNumberItemsListener
-    ) {
-        if (listItem[position].numberInCart == 1) {
-            listItem.removeAt(position)
-        } else {
-            listItem[position].numberInCart = listItem[position].numberInCart - 1
-        }
-        tinyDB.putListObject("CartList", listItem)
-        changeNumberItemsListener.change()
-    }*/
 
     fun minusNumberItem(
         listItem: ArrayList<Foods?>,
@@ -200,16 +138,6 @@ class ManagmentCart(private val context: Context) {
                 }
             })
     }
-
-    /*fun plusNumberItem(
-        listItem: ArrayList<Foods>,
-        position: Int,
-        changeNumberItemsListener: ChangeNumberItemsListener
-    ) {
-        listItem[position].numberInCart = listItem[position].numberInCart + 1
-        tinyDB.putListObject("CartList", listItem)
-        changeNumberItemsListener.change()
-    }*/
 
     fun plusNumberItem(
         listItem: ArrayList<Foods?>,
