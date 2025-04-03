@@ -17,11 +17,6 @@ class IntroActivity : BaseActivity() {
 
     private fun setvariable() {
         binding!!.loginBtn.setOnClickListener {
-            /*if (mAuth!!.currentUser != null) {
-                startActivity(Intent(this@IntroActivity, MainActivity::class.java))
-            } else {
-                startActivity(Intent(this@IntroActivity, LoginActivity::class.java))
-            }*/
             startActivity(Intent(this@IntroActivity,LoginActivity::class.java))
         }
         binding!!.SignUpBtn.setOnClickListener {
