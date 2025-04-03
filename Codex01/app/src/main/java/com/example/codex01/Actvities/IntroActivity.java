@@ -29,11 +29,6 @@ public class IntroActivity extends BaseActivity {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* if (mAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(IntroActivity.this, MainActivity.class));
-                } else {
-                    startActivity(new Intent(IntroActivity.this, LoginActivity.class));
-                }*/
                 startActivity(new Intent(IntroActivity.this,LoginActivity.class));
             }
         });
