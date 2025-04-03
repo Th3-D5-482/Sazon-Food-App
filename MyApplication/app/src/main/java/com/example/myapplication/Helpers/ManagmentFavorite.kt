@@ -16,25 +16,6 @@ class ManagmentFavorite(private val context: Context) {
         tinyDB = TinyDB(context)
     }
 
-    /*fun insertFavorite(item: Foods) {
-        val listpop = getListFavorite()
-        var existAlready = false
-        var n = 0
-        for (i in listpop.indices) {
-            if (listpop[i].Title == item.Title) {
-                existAlready = true
-                n = i
-                break
-            }
-        }
-        if (existAlready) {
-            listpop[n].numberInFavorite = item.numberInFavorite
-        } else {
-            listpop.add(item)
-        }
-        tinyDB.putListObject("FavoriteList", listpop)
-        Toast.makeText(context, "Added to Favorites", Toast.LENGTH_SHORT).show()
-    }*/
 
     fun insertFavorite(item: Foods) {
         // Get the currently logged-in user's email from SharedPreferences
@@ -50,7 +31,6 @@ class ManagmentFavorite(private val context: Context) {
                         if (dataSnapshot.exists()) {
                             for (snapshot in dataSnapshot.getChildren()) {
                                 val key = snapshot.key!!
-                                //favoritesRef.child(key).child("numberInFavorite").setValue(item.getNumberInFavorite());
                             }
                         } else {
                             val newFavoriteRef = favoritesRef.push()
