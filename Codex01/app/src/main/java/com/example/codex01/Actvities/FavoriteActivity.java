@@ -45,25 +45,7 @@ public class FavoriteActivity extends AppCompatActivity {
         setvariable();
         initList();
     }
-    /*public void initList()
-    {
-        ArrayList<Foods> favoriteList = managmentFavorite.getListFavorite();
-        if (favoriteList == null || favoriteList.size() == 0)
-        {
-            binding.emptyTxt.setVisibility(View.VISIBLE);
-            binding.scrollviewCart.setVisibility(View.GONE);
-        }
-        else
-        {
-            binding.emptyTxt.setVisibility(View.GONE);
-            binding.scrollviewCart.setVisibility(View.VISIBLE);
-        }
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        binding.CardView.setLayoutManager(linearLayoutManager);
-        adapter = new FavoriteAdapter(favoriteList, this);
-        binding.CardView.setAdapter(adapter);
-    }*/
-
+    
     private void initList() {
         SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
         String userEmail = sharedPreferences.getString("email", "");
