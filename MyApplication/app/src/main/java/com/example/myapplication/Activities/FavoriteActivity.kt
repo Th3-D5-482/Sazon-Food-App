@@ -33,21 +33,6 @@ class FavoriteActivity : AppCompatActivity() {
         initList()
     }
 
-    /*fun initList() {
-        val favoriteList: ArrayList<Foods> = managmentFavorite!!.getListFavorite()
-        if (favoriteList == null || favoriteList.size == 0) {
-            binding?.emptyTxt?.setVisibility(View.VISIBLE)
-            binding?.scrollviewCart?.setVisibility(View.GONE)
-        } else {
-            binding?.emptyTxt?.setVisibility(View.GONE)
-            binding?.scrollviewCart?.setVisibility(View.VISIBLE)
-        }
-        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding?.CardView?.setLayoutManager(linearLayoutManager)
-        adapter = FavoriteAdapter(favoriteList, this)
-        binding?.CardView?.setAdapter(adapter)
-    }*/
-
     private fun initList() {
         val sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
         val userEmail = sharedPreferences.getString("email", "")
