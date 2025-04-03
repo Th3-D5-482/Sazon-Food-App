@@ -37,73 +37,7 @@ class CartActivity : BaseActivity() {
         calculateCart()
         initList()
     }
-
-/*private fun initList() {
-        if (managmentCart.getListCart().isEmpty()) {
-            binding.emptyTxt.visibility = View.VISIBLE
-            binding.scrollviewCart.visibility = View.GONE
-        } else {
-            binding.emptyTxt.visibility = View.GONE
-            binding.scrollviewCart.visibility = View.VISIBLE
-        }
-        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.cardView.layoutManager = linearLayoutManager
-        adapter = CartAdapter(managmentCart.getListCart(), this, object : ChangeNumberItemsListener {
-            override fun change() {
-                calculateCart()
-            }
-        })
-        binding.cardView.adapter = adapter
-    }*/
-
-
-    /*private fun initList() {
-        val cartRef = FirebaseDatabase.getInstance().getReference("Cart")
-        //binding.progressBarFavorites.setVisibility(View.VISIBLE);
-        val cartList = ArrayList<Foods>()
-        cartRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (issue in dataSnapshot.children) {
-                        issue.getValue(Foods::class.java)?.let {
-                            cartList.add(it)
-                        }
-                    }
-                    if (!cartList.isEmpty()) {
-                        binding.emptyTxt.visibility = View.GONE
-                        binding.scrollviewCart.visibility = View.VISIBLE
-                        val linearLayoutManager = LinearLayoutManager(
-                            this@CartActivity,
-                            LinearLayoutManager.VERTICAL,
-                            false
-                        )
-                        binding.cardView.layoutManager = linearLayoutManager
-                        adapter = CartAdapter(
-                            cartList,
-                            this@CartActivity,
-                            object : ChangeNumberItemsListener {
-                                override fun change() {
-                                    calculateCart()
-                                }
-                            })
-                        binding.cardView.adapter = adapter
-                    } else {
-                        binding.emptyTxt.visibility = View.VISIBLE
-                        binding.scrollviewCart.visibility = View.GONE
-                    }
-                } else {
-                    binding.emptyTxt.visibility = View.VISIBLE
-                    binding.scrollviewCart.visibility = View.GONE
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                //Log.e("Firebase", "Error fetching favorites", databaseError.toException());
-                //binding.progressBarFavorites.setVisibility(View.GONE);
-            }
-        })
-    }*/
-
+    
     private fun initList() {
         val sharedPreferences = getSharedPreferences("UserInfo", MODE_PRIVATE)
         val userEmail = sharedPreferences.getString("email", "")
@@ -156,78 +90,7 @@ class CartActivity : BaseActivity() {
             Toast.makeText(this@CartActivity, "User is not logged in", Toast.LENGTH_SHORT).show()
         }
     }
-
-/*private fun calculateCart() {
-        val percentTax = 0.02
-        val delivery = 10.0
-        tax = (Math.round(managmentCart.getTotalFee() * percentTax * 100.0) / 100).toDouble()
-        val total = (Math.round((managmentCart.getTotalFee() + tax + delivery) * 100) / 100).toDouble()
-        val itemTotal = (Math.round(managmentCart.getTotalFee() * 100) / 100).toDouble()
-        binding.totalFeeTxt.text = "$$itemTotal"
-        binding.taxTxt.text = "$$tax"
-        binding.deliveryTxt.text = "$$delivery"
-        binding.totalTxt.text = "$$total"
-    }*/
-
-
-    /*private fun calculateCart() {
-        val percentTax = 0.1
-        val delivery = 10.0
-        val cartRef = FirebaseDatabase.getInstance().getReference("Cart")
-        cartRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                var totalCartPrice = 0.0
-                for (snapshot in dataSnapshot.children) {
-                    val totalPrice = snapshot.child("TotalPrice").getValue(
-                        Double::class.java
-                    )!!
-                    totalCartPrice += totalPrice
-                }
-                tax = (Math.round(totalCartPrice * percentTax * 100.0) / 100).toDouble()
-                val total = (Math.round((totalCartPrice + tax + delivery) * 100) / 100).toDouble()
-                val itemTotal = (Math.round(totalCartPrice * 100) / 100).toDouble()
-                binding.totalFeeTxt.text = "$$itemTotal"
-                binding.taxTxt.text = "$$tax"
-                binding.deliveryTxt.text = "$$delivery"
-                binding.totalTxt.text = "$$total"
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle Errors
-            }
-        })
-    }*/
-
-   /* private fun calculateCart() {
-        val percentTax = 0.1
-        val delivery = 10.0
-        val cartRef = FirebaseDatabase.getInstance().getReference("Cart")
-        cartRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                var totalCartPrice = 0.0
-                for (snapshot in dataSnapshot.getChildren()) {
-                    val totalPrice = snapshot.child("TotalPrice").getValue(
-                        Double::class.java
-                    )
-                    if (totalPrice != null) {
-                        totalCartPrice += totalPrice
-                    }
-                }
-                tax = (Math.round(totalCartPrice * percentTax * 100.0) / 100).toDouble()
-                val total = (Math.round((totalCartPrice + tax + delivery) * 100) / 100).toDouble()
-                val itemTotal = (Math.round(totalCartPrice * 100) / 100).toDouble()
-                binding.totalFeeTxt.text = "$$itemTotal"
-                binding.taxTxt.text = "$$tax"
-                binding.deliveryTxt.text = "$$delivery"
-                binding.totalTxt.text = "$$total"
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle Errors
-            }
-        })
-    }*/
-
+    
     private fun calculateCart() {
         val percentTax = 0.1
         val delivery = 10.0
@@ -274,68 +137,7 @@ class CartActivity : BaseActivity() {
         binding.backBtn.setOnClickListener {
             startActivity(Intent(this@CartActivity,MainActivity::class.java))
         }
-        /*binding.placeOdrBtn.setOnClickListener {
-            val address = binding.edAddress.getText().toString().trim()
-            val phonenumber = binding.edPhoneNumber.getText().toString().trim()
-            if (TextUtils.isEmpty(address)) {
-                Toast.makeText(this@CartActivity, "Please enter your address", Toast.LENGTH_SHORT)
-                    .show()
-            } else if (phonenumber.length != 10) {
-                Toast.makeText(
-                    this@CartActivity,
-                    "Phone Number must be 10 digits",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else if (adapter == null || adapter!!.itemCount == 0) {
-                Toast.makeText(this@CartActivity, "Your cart is empty", Toast.LENGTH_SHORT).show()
-            } else {
-                // Get the currently logged-in user's email from SharedPreferences
-                val sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
-                val userEmail = sharedPreferences.getString("email", "")
-                if (!userEmail!!.isEmpty()) {
-                    val cartRef = FirebaseDatabase.getInstance().getReference("Cart").child(
-                        userEmail!!.replace(".", "_")
-                    )
-                    cartRef.removeValue().addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            val ordersRef =
-                                FirebaseDatabase.getInstance().getReference("Orders").child(
-                                    userEmail!!.replace(".", "_")
-                                ).push()
-                            ordersRef.child("Address")
-                                .setValue(binding.edAddress.getText().toString())
-                            ordersRef.child("Phone Number")
-                                .setValue(binding.edPhoneNumber.getText().toString())
-                            ordersRef.child("SubTotal")
-                                .setValue(binding.totalFeeTxt.getText().toString())
-                            ordersRef.child("Delivery")
-                                .setValue(binding.deliveryTxt.getText().toString())
-                            ordersRef.child("TotalTax")
-                                .setValue(binding.taxTxt.getText().toString())
-                            ordersRef.child("Total").setValue(binding.totalTxt.getText().toString())
-                            Toast.makeText(this@CartActivity, "Order Placed", Toast.LENGTH_SHORT)
-                                .show()
-                            startActivity(
-                                Intent(
-                                    this@CartActivity,
-                                    MainActivity::class.java
-                                )
-                            )
-                        } else {
-                            Toast.makeText(
-                                this@CartActivity,
-                                "Failed to place order",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                } else {
-                    // Handle case where user is not logged in
-                    Toast.makeText(this@CartActivity, "User is not logged in", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-        }*/
+        
         binding.placeOdrBtn.setOnClickListener {
             val address = binding.edAddress.getText().toString().trim()
             val phonenumber = binding.edPhoneNumber.getText().toString().trim()
