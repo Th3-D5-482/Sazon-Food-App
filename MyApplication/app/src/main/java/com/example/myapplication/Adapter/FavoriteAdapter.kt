@@ -60,16 +60,6 @@ class FavoriteAdapter(var list: ArrayList<Foods?>, context: FavoriteActivity) :
             intent.putExtra("object", list[holder.adapterPosition])
             context.startActivities(arrayOf(intent))
         }
-        /*holder.removeBtn.setOnClickListener {
-            var pos = holder.adapterPosition
-            list.removeAt(pos)
-            tinyDB.putListObject("FavoriteList", list)
-            notifyItemRemoved(pos)
-            if (pos >= getItemCount) {
-                pos = getItemCount -1
-            }
-            Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show()
-        }*/
         holder.removeBtn.setOnClickListener {
             var pos = holder.getAdapterPosition()
             val removedItem = list[pos]!!
