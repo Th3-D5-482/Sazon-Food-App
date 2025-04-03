@@ -33,26 +33,6 @@ public class ManagmentFavorite {
         this.databaseReference = FirebaseDatabase.getInstance().getReference().child("FavoriteList");
     }
 
-    /*public void insertFavorite(Foods item) {
-        ArrayList<Foods> listpop = getListFavorite();
-        boolean existAlready = false;
-        int n = 0;
-        for (int i = 0; i < listpop.size(); i++) {
-            if (listpop.get(i).getTitle().equals(item.getTitle())) {
-                existAlready = true;
-                n = i;
-                break;
-            }
-        }
-        if(existAlready){
-            listpop.get(n).setNumberInFavorite(item.getNumberInFavorite());
-        }else{
-            listpop.add(item);
-        }
-        tinyDB.putListObject("FavoriteList",listpop);
-        Toast.makeText(context, "Added to Favorites", Toast.LENGTH_SHORT).show();
-    }*/
-
     public void insertFavorite(Foods item) {
         // Get the currently logged-in user's email from SharedPreferences
         SharedPreferences sharedPreferences = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
@@ -66,7 +46,6 @@ public class ManagmentFavorite {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             String key = snapshot.getKey();
                             assert key != null;
-                            //favoritesRef.child(key).child("numberInFavorite").setValue(item.getNumberInFavorite());
                         }
                     } else {
                         DatabaseReference newFavoriteRef = favoritesRef.push();
