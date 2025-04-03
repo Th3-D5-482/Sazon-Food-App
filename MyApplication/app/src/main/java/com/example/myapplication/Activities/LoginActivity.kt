@@ -25,31 +25,6 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun setVariable() {
-        /*binding!!.loginBtn.setOnClickListener {
-            val email = binding!!.Edemailaddress.text.toString()
-            val password = binding!!.Edpassword.text.toString()
-            if (!email.isEmpty() && !password.isEmpty()) {
-                mAuth!!.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this@LoginActivity) { task ->
-                        if (task.isSuccessful) {
-                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                            Toast.makeText(this@LoginActivity,"Login Sucessful",Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(
-                                this@LoginActivity,
-                                "Account doesn't exist, please SignUp",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-            } else {
-                Toast.makeText(
-                    this@LoginActivity,
-                    "Please Enter the EmailID and Password",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }*/
         binding!!.loginBtn.setOnClickListener { view ->
             val email = binding!!.Edemailaddress.text.toString()
             val password = binding!!.Edpassword.text.toString()
