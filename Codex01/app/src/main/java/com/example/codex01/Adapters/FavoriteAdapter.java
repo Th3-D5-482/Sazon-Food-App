@@ -45,12 +45,10 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.viewho
     private int getItemCount;
     private ManagmentFavorite managmentFavorite;
     Context context;
-    //private TinyDB tinyDB;
 
     public FavoriteAdapter(ArrayList<Foods> list, FavoriteActivity context) {
         this.list = list;
         this.context = context;
-        //this.tinyDB = new TinyDB(context);
         this.managmentFavorite = new ManagmentFavorite(context);
     }
     
@@ -81,19 +79,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.viewho
                 context.startActivities(new Intent[]{intent});
             }
         });
-        /*holder.removeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int pos = holder.getAdapterPosition();
-                list.remove(pos);
-                tinyDB.putListObject("FavoriteList", list);
-                notifyItemRemoved(pos);
-                if (pos >= getItemCount()) {
-                    pos = getItemCount() - 1;
-                }
-                Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
-            }
-        });*/
         holder.removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
