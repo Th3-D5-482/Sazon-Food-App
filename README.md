@@ -1,4 +1,6 @@
-# 🍽️ Sazon Food App (Project: CodeX01)
+# 🍽️ Sazon Food App
+
+### 🔐 Code name: Project CodeX01
 
 ### 👤 Created by: Th3_D5_482
 
