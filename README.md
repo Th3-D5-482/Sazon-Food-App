@@ -1,6 +1,6 @@
 # 🍽️ Sazon Food App
 
-### 🔐 Code name: Gensis
+### 🔐 Code name: Project Gensis
 
 ### 👤 Created by: Th3_D5_482
 
